@@ -1,0 +1,22 @@
+# Secrets — NEVER commit
+.env
+*.key
+lyfta_key.txt
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# Virtual envs (we use conda, but just in case)
+venv/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
