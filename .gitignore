@@ -9,6 +9,7 @@ __pycache__/
 *.egg-info/
 .pytest_cache/
 .ruff_cache/
+scratch_*test.py
 
 # Virtual envs (we use conda, but just in case)
 venv/
@@ -19,4 +20,4 @@ venv/
 .idea/
 
 # OS
-.DS_Store
+.DS_Storescratch_transforms_test.py
