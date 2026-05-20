@@ -5,7 +5,6 @@ or MCP. It takes typed data in and produces typed data out.
 """
 
 from datetime import datetime, timedelta, timezone
-import re
 
 from .client import LyftaClient
 from .models import LyftaModel

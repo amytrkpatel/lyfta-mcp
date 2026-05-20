@@ -2,7 +2,6 @@
 import os
 from dataclasses import dataclass
 from dotenv import load_dotenv
-from flask import request
 
 #Load .env file into os.environ
 load_dotenv()
