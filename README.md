@@ -122,6 +122,21 @@ which python  # after activating your venv
 
 Then ask Claude questions about your fitness data!
 
+### Hosting on Render
+
+If you want to host the MCP server on Render, use the HTTP transport mode.
+
+1. In Render, create a new **Web Service**.
+2. Set the **Environment** to `Python 3.11`.
+3. Use the following commands:
+   - Build Command: `pip install -e .`
+   - Start Command: `python -m lyfta_mcp.server`
+4. Set environment variables in Render:
+   - `TRANSPORT=http`
+   - `LYFTA_API_KEY` (required)
+
+Render automatically provides a `PORT` environment variable, and the server will bind to it. Once deployed, the MCP server is available over HTTP and can be connected from any compatible Claude client.
+
 ### Programmatic Usage
 
 ```python
