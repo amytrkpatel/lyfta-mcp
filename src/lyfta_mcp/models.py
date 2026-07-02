@@ -5,6 +5,7 @@ Models are organized bottom-up: leaves first (Set), then parents (Exercise, Work
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
+
 class LyftaModel(BaseModel):
     """Base for all Lyfta models. Centralizes common config."""
     
@@ -83,8 +84,24 @@ class PaginatedEnvelope(LyftaModel):
     count: int
     total_records: int | None = None
     total_pages: int | None = None
-    current_page: int
+    current_page: int | None = None
     limit: int
+
+    @field_validator("current_page", "total_pages", "total_records", mode="before")
+    @classmethod
+    def normalize_optional_int(cls, v):
+        """Lyfta sometimes returns null or empty strings for pagination fields."""
+        if v is None:
+            return None
+        if isinstance(v, str):
+            value = v.strip()
+            if value.lower() in ("", "null", "none"):
+                return None
+            try:
+                return int(value)
+            except ValueError:
+                return None
+        return v
 
 class WorkoutsResponse(PaginatedEnvelope):
     """Envelope for /api/v1/workouts response."""
